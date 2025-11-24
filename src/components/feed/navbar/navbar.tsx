@@ -36,8 +36,8 @@ const navLinkCss = `h-full flex items-center gap-2
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 left-0 bg-white ">
-      <div className=" max-w-7xl mx-auto flex items-center justify-between gap-16  h-24">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white ">
+      <div className=" max-w-7xl mx-auto flex items-center justify-between gap-16 h-24">
         {/* logo */}
         <Image src={logo} alt="logo" className="w-auto h-auto" />
 

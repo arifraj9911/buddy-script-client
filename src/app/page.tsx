@@ -7,7 +7,7 @@ export default function Home() {
       <Navbar />
 
       {/* Layout Feed */}
-      <div className="bg-gray-100 px-6 py-6">
+      <div className="bg-gray-100 px-6 pt-28 pb-8 ">
         <LayoutFeed />
       </div>
     </section>
