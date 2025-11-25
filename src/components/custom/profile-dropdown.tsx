@@ -1,11 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function ProfileDropdown() {
   const [openProfile, setOpenProfile] = useState(false);
-  console.log(openProfile);
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.push("/login");
+  };
   return (
     <div className="relative w-max mx-auto">
       <button
@@ -69,7 +76,10 @@ export default function ProfileDropdown() {
             </svg>
             Dashboard
           </li>
-          <li className="dropdown-item py-2.5 px-5 flex items-center hover:bg-slate-100 text-slate-600 font-medium text-sm cursor-pointer">
+          <li
+            onClick={handleLogout}
+            className="dropdown-item py-2.5 px-5 flex items-center hover:bg-slate-100 text-slate-600 font-medium text-sm cursor-pointer"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"

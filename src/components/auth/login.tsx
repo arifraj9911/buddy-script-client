@@ -7,6 +7,8 @@ import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 
 interface IFormInput {
   email: string;
@@ -15,6 +17,8 @@ interface IFormInput {
 
 export default function Login() {
   const { register, handleSubmit } = useForm<IFormInput>();
+  const router = useRouter();
+  useAuth(false);
 
   const fetchLogin = async (email: string, password: string) => {
     try {
@@ -23,6 +27,9 @@ export default function Login() {
         password,
       });
       console.log("login data", res.data);
+      const token = res.data.data.access_token;
+      localStorage.setItem("token", JSON.stringify(token));
+      router.push("/");
       return res.data;
     } catch (error) {
       console.log("failed to login!", error);

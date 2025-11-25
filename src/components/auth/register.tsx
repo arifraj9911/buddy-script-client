@@ -7,6 +7,8 @@ import registerImg from "@/assets/images/registration.png";
 import { FcGoogle } from "react-icons/fc";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 interface IFormInput {
   firstName: string;
@@ -17,7 +19,8 @@ interface IFormInput {
 
 export default function Register() {
   const { register, handleSubmit } = useForm<IFormInput>();
-
+  const router = useRouter();
+  useAuth(false);
   const fetchRegister = async (
     firstName: string,
     lastName: string,
@@ -35,6 +38,7 @@ export default function Register() {
         }
       );
       console.log("register data", res.data);
+      router.push("/");
       return res.data;
     } catch (error) {
       console.log("failed to register!", error);

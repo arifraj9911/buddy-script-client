@@ -1,7 +1,11 @@
+"use client"
+
+import { useAuth } from "@/hooks/useAuth";
 import ContentStory from "../custom/content-story";
 import MiddleContent from "../feed/middle-content/middle-content";
 
 export default function LayoutFeed() {
+  useAuth(true);
   return (
     <main className="max-w-7xl mx-auto h-screen grid grid-cols-[300px_1fr_300px] gap-6 overflow-hidden ">
       {/* left sidebar */}

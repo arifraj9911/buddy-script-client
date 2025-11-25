@@ -1,9 +1,35 @@
-import postImg from "@/assets/images/timeline_img.png"
+import postImg from "@/assets/images/timeline_img.png";
 
 interface UserType {
   firstName: string;
   lastName: string;
   email: string;
+}
+
+interface LikeInfoType {
+  email: string;
+  isLike: boolean;
+}
+
+interface LikesType {
+  totalCounts: number;
+  likeInfo: LikeInfoType[];
+}
+
+interface ReplyType {
+  id: number;
+  text: string;
+  user: UserType;
+  createdAt: string;
+}
+
+interface CommentType {
+  id: number;
+  text: string;
+  user: UserType;
+  createdAt: string;
+  replies: ReplyType[];
+  likes: LikesType;
 }
 
 interface PostType {
@@ -13,8 +39,9 @@ interface PostType {
   postTime: string;
   isPublic: boolean;
   user: UserType;
+  comments: CommentType[];
+  likes: LikesType;
 }
-
 
 export const postData: PostType[] = [
   {
@@ -28,7 +55,46 @@ export const postData: PostType[] = [
       lastName: "Hossain",
       email: "arif@mail.com",
     },
+
+    likes: {
+      totalCounts: 1,
+      likeInfo: [
+        { email: "mira@outlook.com", isLike: true }
+      ]
+    },
+
+    comments: [
+      {
+        id: 1,
+        text: "Wow! Which city?",
+        createdAt: "2025-01-10 15:10",
+        user: {
+          firstName: "Mira",
+          lastName: "Das",
+          email: "mira@outlook.com",
+        },
+
+        likes: {
+          totalCounts: 0,
+          likeInfo: []
+        },
+
+        replies: [
+          {
+            id: 1,
+            text: "Dhaka ☺️",
+            createdAt: "2025-01-10 15:20",
+            user: {
+              firstName: "Arif",
+              lastName: "Hossain",
+              email: "arif@mail.com",
+            },
+          },
+        ],
+      },
+    ],
   },
+
   {
     id: 2,
     text: "Coffee break ☕",
@@ -40,7 +106,15 @@ export const postData: PostType[] = [
       lastName: "Das",
       email: "mira@outlook.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 3,
     text: "Nature always heals 🌿",
@@ -52,7 +126,15 @@ export const postData: PostType[] = [
       lastName: "Ahmed",
       email: "siam@gmail.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 4,
     text: "Working hard or hardly working? 😄",
@@ -64,7 +146,15 @@ export const postData: PostType[] = [
       lastName: "Khan",
       email: "nishat@domain.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 5,
     text: "My new painting 🎨",
@@ -76,7 +166,15 @@ export const postData: PostType[] = [
       lastName: "Rahman",
       email: "kabir@mail.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 6,
     text: "Evening walk by the lake ✨",
@@ -88,7 +186,15 @@ export const postData: PostType[] = [
       lastName: "Sultana",
       email: "rana@gmail.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 7,
     text: "Trying out a new recipe today 🍝",
@@ -100,7 +206,15 @@ export const postData: PostType[] = [
       lastName: "Noor",
       email: "lamia@domain.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 8,
     text: "Reading a new book 📚",
@@ -112,7 +226,15 @@ export const postData: PostType[] = [
       lastName: "Hasan",
       email: "tanvir@mail.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 9,
     text: "Sunset vibes 🌅",
@@ -124,7 +246,15 @@ export const postData: PostType[] = [
       lastName: "Mahmud",
       email: "rifat@gmail.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
+
   {
     id: 10,
     text: "Just finished a workout session 💪",
@@ -136,5 +266,12 @@ export const postData: PostType[] = [
       lastName: "Kamal",
       email: "farhan@outlook.com",
     },
+
+    likes: {
+      totalCounts: 0,
+      likeInfo: []
+    },
+
+    comments: [],
   },
 ];
